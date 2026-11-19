@@ -1,0 +1,529 @@
+<nav class="cap" aria-label="Secciones">
+  <a class="brand" href="#inicio"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="13" width="26" height="12" fill="#D97757"/><rect x="3" y="18" width="4" height="4" fill="#D97757"/><rect x="33" y="18" width="4" height="4" fill="#D97757"/><rect x="10" y="25" width="2" height="4" fill="#D97757"/><rect x="14" y="25" width="2" height="4" fill="#D97757"/><rect x="24" y="25" width="2" height="4" fill="#D97757"/><rect x="28" y="25" width="2" height="4" fill="#D97757"/><rect x="13" y="15" width="3" height="5" fill="#1F1E1D"/><rect x="24" y="15" width="3" height="5" fill="#1F1E1D"/><rect x="7" y="13" width="26" height="2" fill="#fff" opacity=".18"/></svg><span>Naranjito Lab</span></a>
+  <div class="links">
+    <a href="#inicio" data-s="inicio">Inicio</a>
+    <a href="#que-es" data-s="que-es">¿Qué es?</a>
+    <a href="#inventario" data-s="inventario">Tabla</a>
+    <a href="#area-1" data-s="area-1">Área I</a>
+    <a href="#area-2" data-s="area-2">Área II</a>
+    <a href="#area-3" data-s="area-3">Área III</a>
+    <a href="#area-4" data-s="area-4">Área IV</a>
+    <a href="#elementos" data-s="elementos">Render</a>
+    <a href="#arquitectura" data-s="arquitectura">3D</a>
+    <a href="#jam" data-s="jam">Jam</a>
+    <a href="#galeria" data-s="galeria">Museo</a>
+    <a href="#glosario" data-s="glosario">Glosario</a>
+  </div>
+</nav>
+
+<main>
+<!-- ================= HERO ================= -->
+<section id="inicio" class="world w-hero" data-world="w-hero">
+  <div class="wrap hero">
+    <div class="hero-copy">
+      <p class="eyebrow halo"><i>●</i> Laboratorio de prototipos · edición Jam · v0.9.9-casi-listo</p>
+      <h1 class="glitch halo">Tú traes la idea.<br>Yo armo el <span class="serif">prototipo.</span></h1>
+      <p class="lead halo">Una demo para colectivos y grupos de estudiantes que quieren entrarle a la IA y todavía no saben qué es Codex ni qué se arma en un Jam. Cuatro áreas del conocimiento, ocho prototipos que funcionan, cuatro escenas renderizadas en vivo, dieciocho herramientas y una sesión de tres horas lista para correr.</p>
+      <div class="row">
+        <button class="btn solid" id="startTour">Empezar el tour con Naranjito</button>
+        <a class="btn" href="#area-1">Saltar a las áreas</a>
+      </div>
+      <div class="stats halo">
+        <span><b>8</b>prototipos funcionando</span>
+        <span><b>24</b>ideas con prompt listo</span>
+        <span><b>4</b>escenas en tiempo real</span>
+        <span><b>0</b>líneas que tengas que escribir</span>
+      </div>
+    </div>
+    <div>
+      <div class="stagebox" id="heroStage">
+        <div class="hbub" id="heroBub" aria-live="polite">Hola. Soy Naranjito, el bichito de Claude Code versión fan. Tócame y me cambio de sombrero.</div>
+        <button class="mascot-big" id="heroM" aria-label="Naranjito, el robotcito guía. Tócalo para cambiarle el sombrero"></button>
+      </div>
+      <div class="hats" id="hatChips" aria-label="Probador de sombreros"></div>
+    </div>
+  </div>
+  <div class="ticker" aria-hidden="true"><div class="tk" id="ticker"></div></div>
+</section>
+
+<!-- ================= QUE ES ================= -->
+<section id="que-es" class="world w-term" data-world="w-term">
+  <div class="wrap stack">
+    <div class="stack" style="gap:16px">
+      <p class="eyebrow halo"><i>01</i> Lo básico, sin pena</p>
+      <h2 class="glitch halo">¿Chat, agente <span class="serif">o qué?</span></h2>
+      <p class="lead halo">Si alguien en tu grupo dijo «Codex» y todos asintieron sin saber, esta parte es para ustedes. Un chat te contesta. Un agente, además, hace el trabajo: escribe, ejecuta, prueba y te entrega algo que funciona.</p>
+    </div>
+    <div class="qe">
+      <div class="term" aria-label="Ejemplo de una sesión con un agente">
+        <div class="term-bar"><i></i><i></i><i></i><span>naranjito@nube ~ sesión de ejemplo</span></div>
+        <div class="term-body" id="term"></div>
+      </div>
+      <div class="auto">
+        <div class="lbl"><span>Nivel de autonomía</span><output id="autoO">Agente</output></div>
+        <input type="range" id="autoR" min="0" max="3" step="1" value="2" aria-label="Nivel de autonomía">
+        <div class="auto-stops"><span>Autocompletar</span><span>Chat</span><span>Agente</span><span>Equipo</span></div>
+        <div class="nodes" id="autoNodes">
+          <span class="node me on" data-n="0">Tú</span><span class="arrow" data-a="0">→</span>
+          <span class="node" data-n="1">Modelo</span><span class="arrow" data-a="1">→</span>
+          <span class="node" data-n="2">Herramientas: terminal, web, archivos</span><span class="arrow" data-a="2">→</span>
+          <span class="node" data-n="3">Subagentes</span>
+        </div>
+        <h3 id="autoT"></h3>
+        <p id="autoD" style="color:var(--ink2)"></p>
+        <p class="ex" id="autoE"></p>
+      </div>
+    </div>
+    <div class="stack" style="gap:18px">
+      <p class="eyebrow halo"><i>02</i> Del prompt al link, en cinco pasos</p>
+      <div class="pipe" id="pipe"><span class="dot" aria-hidden="true"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INVENTARIO ================= -->
+<section id="inventario" class="world w-tools" data-world="w-tools">
+  <div class="wrap stack">
+    <div class="stack" style="gap:16px">
+      <p class="eyebrow"><i>03</i> Todo lo que se puede hacer en esta sesión</p>
+      <h2 class="glitch halo">La tabla periódica <span class="serif">de lo posible.</span></h2>
+      <p class="lead halo">Dieciocho elementos, seis familias. Toca uno y te digo qué es, cómo pedirlo y qué te entrego. La masa atómica es la experiencia que necesitas para dominarlo: 1 es de primer día.</p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="inv">
+      <div class="ptable" id="ptable"></div>
+      <aside class="eld" id="eld" aria-live="polite"></aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AREA I ================= -->
+<section id="area-1" class="world w-a1" data-world="w-a1">
+  <div class="wrap stack">
+    <header class="ahead">
+      <div class="numeral" aria-hidden="true">I</div>
+      <div class="atitle">
+        <p class="eyebrow halo"><i>Área I</i> de IV · <span class="hatbadge">Sombrero: casco de obra</span></p>
+        <h2 class="glitch halo">Físico-Matemáticas <span class="serif">e Ingenierías</span></h2>
+        <ul class="tags"><li>Física</li><li>Matemáticas</li><li>Actuaría</li><li>Ing. Civil</li><li>Mecatrónica</li><li>Computación</li></ul>
+      </div>
+      <article class="ficha">
+        <div class="folio"><span>Ficha I · Plano 1:50</span><span>Lectura 40 s</span></div>
+        <p class="big">Aquí el prototipo no explica la ecuación: te deja meterle la mano.</p>
+        <p>Un simulador enseña más que tres diapositivas con fórmulas. Mueves un parámetro, ves la consecuencia, y la intuición llega antes que el álgebra. Después el álgebra se entiende mejor.</p>
+        <div class="note"><svg class="face" viewBox="0 0 40 40" aria-hidden="true"><use href="#faceIcon"/></svg><p><small>Nota de Naranjito</small>Pídeme siempre las unidades. Un puente calculado en «unidades bonitas» se cae.</p></div>
+      </article>
+    </header>
+    <div class="wins">
+      <article class="win" data-prompt="pendulo">
+        <div class="win-bar"><span class="ttl">pendulo_doble.exe</span><span class="tag">RK4 · 240 Hz</span><button class="wb-q" aria-label="Ver el prompt que lo arma">?</button><button class="wb-min" aria-label="Minimizar ventana">_</button></div>
+        <div class="win-body">
+          <div class="win-head"><h3>Efecto mariposa de escritorio</h3><p>Dos péndulos dobles salen casi del mismo ángulo. Casi. Mira cuánto tarda una diferencia de millonésimas en volverse enorme.</p></div>
+          <div class="stage"><canvas id="pdCv" aria-label="Simulación de dos péndulos dobles"></canvas>
+            <div class="legend"><span><i style="background:#FFD23F"></i>péndulo A</span><span><i style="background:#5FE0FF"></i>péndulo B</span></div></div>
+          <div class="readouts"><span class="ro">t = <b id="pdT">0.0 s</b></span><span class="ro">separación de las puntas = <b id="pdSep">0 m</b></span></div>
+          <div class="ctrls">
+            <div class="ctl"><label for="pdAng">Ángulo inicial <output id="pdAngO">120°</output></label><input type="range" id="pdAng" min="30" max="179" value="120"></div>
+            <div class="ctl"><label for="pdDelta">Diferencia inicial <output id="pdDeltaO">10⁻⁶ rad</output></label><input type="range" id="pdDelta" min="1" max="9" value="6"></div>
+            <div class="ctl"><label for="pdMass">Masa 2 / masa 1 <output id="pdMassO">1.0</output></label><input type="range" id="pdMass" min="0.2" max="3" step="0.1" value="1"></div>
+          </div>
+          <div class="row"><button class="btn solid sm" id="pdReset">Soltar de nuevo</button><button class="btn sm" id="pdPause" aria-pressed="false">Pausa</button></div>
+        </div>
+      </article>
+      <article class="win" data-prompt="fourier">
+        <div class="win-bar"><span class="ttl">fourier_epiciclos.exe</span><span class="tag">DFT · 200 muestras</span><button class="wb-q" aria-label="Ver el prompt que lo arma">?</button><button class="wb-min" aria-label="Minimizar ventana">_</button></div>
+        <div class="win-body">
+          <div class="win-head"><h3>Dibuja algo. Lo rehago con círculos.</h3><p>Cualquier figura cerrada es una suma de círculos que giran a distintas velocidades. Dibuja con el dedo dentro del recuadro y baja los círculos para ver cómo se pierde el detalle.</p></div>
+          <div class="stage"><canvas id="frCv" style="touch-action:none;cursor:crosshair" aria-label="Lienzo para dibujar y reconstruir con epiciclos"></canvas><span class="hint">Dibuja aquí</span></div>
+          <div class="readouts"><span class="ro">círculos usados = <b id="frK">30 de 200</b></span><span class="ro">figura = <b id="frName">corazón</b></span></div>
+          <div class="ctrls"><div class="ctl"><label for="frRange">Número de círculos <output id="frRangeO">30</output></label><input type="range" id="frRange" min="1" max="200" value="30"></div></div>
+          <div class="row"><div class="seg" id="frPreset"><button aria-pressed="true" data-p="heart">Corazón</button><button aria-pressed="false" data-p="star">Estrella</button><button aria-pressed="false" data-p="inf">Infinito</button></div></div>
+        </div>
+      </article>
+    </div>
+    <div class="stack" style="gap:16px">
+      <div class="ideas-h"><h3 class="halo" style="font-size:1.4rem">Seis ideas más para tu Jam</h3><span class="eyebrow halo" style="margin:0">Toca «Copiar» y pégalo tal cual</span></div>
+      <div class="tickets" data-ideas="1"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AREA II ================= -->
+<section id="area-2" class="world w-a2" data-world="w-a2">
+  <div class="wrap stack">
+    <header class="ahead">
+      <div class="numeral" aria-hidden="true">II</div>
+      <div class="atitle">
+        <p class="eyebrow halo"><i>Área II</i> de IV · <span class="hatbadge">Sombrero: gorro quirúrgico</span></p>
+        <h2 class="glitch halo">Biológicas, Químicas <span class="serif">y de la Salud</span></h2>
+        <ul class="tags"><li>Medicina</li><li>Biología</li><li>Enfermería</li><li>Química</li><li>Odontología</li><li>Psicología</li><li>Veterinaria</li></ul>
+      </div>
+      <article class="ficha">
+        <div class="folio"><span>Ficha II · Expediente 0042</span><span>Lectura 35 s</span></div>
+        <p class="big">Lo vivo cambia en el tiempo. Un PDF no.</p>
+        <p>Las curvas epidémicas, la expresión de un gen o una cadena trófica se entienden mejor cuando las puedes acelerar, frenar y romper. Para eso sirve un modelo que se mueve.</p>
+        <div class="note"><svg class="face" viewBox="0 0 40 40" aria-hidden="true"><use href="#faceIcon"/></svg><p><small>Nota de Naranjito</small>Esto es para aprender, no para diagnosticar. Si tu prototipo toca datos de pacientes, primero ética y protocolo.</p></div>
+      </article>
+    </header>
+    <div class="wins">
+      <article class="win" data-prompt="sir">
+        <div class="win-bar"><span class="ttl">modelo_SIR.exe</span><span class="tag">200 días · Euler dt 0.1</span><button class="wb-q" aria-label="Ver el prompt que lo arma">?</button><button class="wb-min" aria-label="Minimizar ventana">_</button></div>
+        <div class="win-body">
+          <div class="win-head"><h3>Aplanar la curva, con números</h3><p>Susceptibles, infectados y recuperados. Sube la vacunación o reduce contactos y mira qué pasa con el pico. Modelo didáctico: no es un pronóstico.</p></div>
+          <div class="stage w21"><canvas id="sirCv" aria-label="Curvas del modelo SIR"></canvas></div>
+            <div class="legend out"><span><i style="background:#0F9C92"></i>susceptibles</span><span><i style="background:#F0484E"></i>infectados</span><span><i style="background:#3D6BFF"></i>recuperados o inmunes</span></div>
+          <div class="readouts"><span class="ro">R efectivo = <b id="sirRe">2.50</b></span><span class="ro">pico = <b id="sirPk">0%</b></span><span class="ro">día del pico = <b id="sirPd">0</b></span><span class="ro">se infectó en total = <b id="sirTot">0%</b></span></div>
+          <div class="ctrls">
+            <div class="ctl"><label for="sirR0">R₀ <output id="sirR0O">2.5</output></label><input type="range" id="sirR0" min="0.8" max="6" step="0.1" value="2.5"></div>
+            <div class="ctl"><label for="sirD">Días contagiando <output id="sirDO">7</output></label><input type="range" id="sirD" min="3" max="14" step="1" value="7"></div>
+            <div class="ctl"><label for="sirV">Vacunación inicial <output id="sirVO">0%</output></label><input type="range" id="sirV" min="0" max="90" step="1" value="0"></div>
+            <div class="ctl"><label for="sirM">Menos contactos <output id="sirMO">0%</output></label><input type="range" id="sirM" min="0" max="70" step="1" value="0"></div>
+          </div>
+          <div class="ctl"><label for="sirDay">Día <output id="sirDayO">60</output></label><input type="range" id="sirDay" min="0" max="200" step="1" value="60"></div>
+          <div class="pgrid" id="sirGrid" aria-label="200 personas en el día seleccionado"></div>
+        </div>
+      </article>
+      <article class="win" data-prompt="adn">
+        <div class="win-bar"><span class="ttl">adn_a_proteina.exe</span><span class="tag">código genético estándar</span><button class="wb-q" aria-label="Ver el prompt que lo arma">?</button><button class="wb-min" aria-label="Minimizar ventana">_</button></div>
+        <div class="win-body">
+          <div class="win-head"><h3>Del ADN a la proteína, y una mutación</h3><p>Busca el codón de inicio ATG, transcribe a ARNm y traduce hasta el primer codón de paro. Muta una base y mira qué le pasa a la proteína.</p></div>
+          <div class="ctl"><label for="dnaIn">Secuencia de ADN (hebra codificante)</label><textarea id="dnaIn" rows="2" spellcheck="false"></textarea></div>
+          <div class="row"><button class="btn solid sm" id="dnaMut">Mutar una base al azar</button><button class="btn sm" id="dnaEx">Volver al ejemplo</button></div>
+          <div><div class="lbl" style="margin-bottom:6px"><span>Lectura desde el inicio</span><span id="dnaInfo"></span></div><div class="seqin" id="dnaSeq"></div></div>
+          <div><div class="lbl" style="margin-bottom:6px"><span>Codones de ARNm → aminoácidos</span></div><div class="codons" id="dnaCod"></div></div>
+          <div class="aalegend" id="aaLeg"></div>
+          <p class="verdict" id="dnaMsg" aria-live="polite"></p>
+        </div>
+      </article>
+    </div>
+    <div class="stack" style="gap:16px">
+      <div class="ideas-h"><h3 class="halo" style="font-size:1.4rem">Seis ideas más para tu Jam</h3><span class="eyebrow halo" style="margin:0">Uso educativo, siempre</span></div>
+      <div class="tickets" data-ideas="2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AREA III ================= -->
+<section id="area-3" class="world w-a3" data-world="w-a3">
+  <div class="wrap stack">
+    <header class="ahead">
+      <div class="numeral" aria-hidden="true">III</div>
+      <div class="atitle">
+        <p class="eyebrow halo"><i>Área III</i> de IV · <span class="hatbadge">Sombrero: copa diplomática</span></p>
+        <h2 class="glitch halo">Ciencias Sociales, <span class="serif">política y mundo</span></h2>
+        <ul class="tags"><li>Ciencia Política</li><li>Relaciones Internacionales</li><li>Administración Pública</li><li>Políticas Públicas</li><li>Economía</li><li>Sociología</li><li>Derecho</li></ul>
+      </div>
+      <article class="ficha">
+        <div class="folio"><span>Ficha III · Minuta reservada</span><span>Lectura 30 s</span></div>
+        <p class="big">Las reglas del juego cambian el resultado, aunque los votos sean los mismos.</p>
+        <p>Gobernanza, diplomacia y política pública son sistemas con incentivos. Un prototipo te deja cambiar una regla y ver cómo se reacomoda todo: escaños, alianzas, presupuestos.</p>
+        <div class="note"><svg class="face" viewBox="0 0 40 40" aria-hidden="true"><use href="#faceIcon"/></svg><p><small>Nota de Naranjito</small>Partidos ficticios, matemáticas reales. Para tu país, carga los resultados oficiales y cita la fuente.</p></div>
+      </article>
+    </header>
+    <div class="wins">
+      <article class="win wide" data-prompt="elec">
+        <div class="win-bar"><span class="ttl">sistemas_electorales.exe</span><span class="tag">D'Hondt · Sainte-Laguë · Hare</span><button class="wb-q" aria-label="Ver el prompt que lo arma">?</button><button class="wb-min" aria-label="Minimizar ventana">_</button></div>
+        <div class="win-body">
+          <div class="win-head"><h3>Mismos votos, otro congreso</h3><p>Reparte los votos entre cinco partidos ficticios y compara cómo cada fórmula los convierte en escaños. Marca partidos para armar una coalición y ver si llegan a mayoría.</p></div>
+          <div class="split">
+            <div class="stack" style="gap:12px">
+              <div class="row" style="justify-content:space-between"><div class="seg" id="elMethod"><button aria-pressed="true" data-m="dh">D'Hondt</button><button aria-pressed="false" data-m="sl">Sainte-Laguë</button><button aria-pressed="false" data-m="hare">Hare</button></div></div>
+              <div class="stage w21"><canvas id="elCv" aria-label="Hemiciclo con escaños por partido"></canvas><span class="hint" id="elHint">50 escaños</span></div>
+              <p class="verdict" id="elVer" aria-live="polite"></p>
+              <div class="ctrls">
+                <div class="ctl"><label for="elSeats">Escaños <output id="elSeatsO">50</output></label><input type="range" id="elSeats" min="10" max="200" value="50"></div>
+                <div class="ctl"><label for="elThr">Umbral mínimo <output id="elThrO">3%</output></label><input type="range" id="elThr" min="0" max="12" step="0.5" value="3"></div>
+              </div>
+            </div>
+            <div class="stack" style="gap:14px">
+              <div class="parties" id="elParties"></div>
+              <div class="tbl"><table><thead><tr><th>Partido</th><th>Votos</th><th>D'H</th><th>S-L</th><th>Hare</th><th>Coal.</th></tr></thead><tbody id="elBody"></tbody><tfoot><tr><td>Gallagher</td><td></td><td id="g1"></td><td id="g2"></td><td id="g3"></td><td></td></tr></tfoot></table></div>
+              <p style="font-size:.8rem;color:var(--ink2)">Gallagher mide la desproporcionalidad: la distancia entre el porcentaje de votos y el de escaños. Cero sería un congreso idéntico al voto.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="win wide" data-prompt="pd">
+        <div class="win-bar"><span class="ttl">torneo_axelrod.exe</span><span class="tag">dilema del prisionero iterado</span><button class="wb-q" aria-label="Ver el prompt que lo arma">?</button><button class="wb-min" aria-label="Minimizar ventana">_</button></div>
+        <div class="win-body">
+          <div class="win-head"><h3>Diplomacia en 200 rondas</h3><p>Dos países pueden cooperar o traicionarse. Una vez, conviene traicionar. Muchas veces, no tanto. Siete estrategias se enfrentan todas contra todas, como en el torneo de Robert Axelrod de 1980.</p></div>
+          <div class="split">
+            <div class="stack" style="gap:12px">
+              <div class="readouts"><span class="ro">ambos cooperan <b>3 / 3</b></span><span class="ro">traicionas a quien coopera <b>5 / 0</b></span><span class="ro">ambos traicionan <b>1 / 1</b></span></div>
+              <div class="bars" id="pdBars"></div>
+              <div class="ctrls">
+                <div class="ctl"><label for="pdRounds">Rondas por partida <output id="pdRoundsO">200</output></label><input type="range" id="pdRounds" min="5" max="500" step="5" value="200"></div>
+                <div class="ctl"><label for="pdNoise">Ruido: jugadas que salen al revés <output id="pdNoiseO">0%</output></label><input type="range" id="pdNoise" min="0" max="20" step="1" value="0"></div>
+              </div>
+              <div class="row"><button class="btn sm" id="pdRerun">Volver a jugar con otra semilla</button></div>
+              <p style="font-size:.84rem;color:var(--ink2)" id="pdNote"></p>
+            </div>
+            <div class="stack" style="gap:12px;background:color-mix(in srgb,var(--paper) 55%,var(--card));border-radius:12px;padding:16px;border:1px solid var(--rule)">
+              <div class="lbl"><span>Juega tú contra un rival misterioso</span><span id="pdRound">Ronda 0 de 10</span></div>
+              <div class="row"><button class="btn solid sm" id="pdC">Cooperar</button><button class="btn sm" id="pdD">Traicionar</button><button class="btn sm" id="pdNew">Nuevo rival</button></div>
+              <div><div class="lbl" style="margin-bottom:4px"><span>Tú arriba · rival abajo</span></div><div class="hist" id="pdHist"></div></div>
+              <div class="readouts"><span class="ro">tus puntos <b id="pdMe">0</b></span><span class="ro">rival <b id="pdOp">0</b></span></div>
+              <p class="verdict" id="pdReveal" aria-live="polite">¿Quién será? Juega diez rondas y te digo.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="stack" style="gap:16px">
+      <div class="ideas-h"><h3 class="halo" style="font-size:1.4rem">Seis ideas más para tu Jam</h3><span class="eyebrow halo" style="margin:0">Gobernanza · foreign affairs · política pública</span></div>
+      <div class="tickets" data-ideas="3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AREA IV ================= -->
+<section id="area-4" class="world w-a4" data-world="w-a4">
+  <div class="wrap stack">
+    <header class="ahead">
+      <div class="numeral" aria-hidden="true">IV</div>
+      <div class="atitle">
+        <p class="eyebrow halo"><i>Área IV</i> de IV · <span class="hatbadge">Sombrero: boina de pintor</span></p>
+        <h2 class="glitch halo">Humanidades <span class="serif">y Artes</span></h2>
+        <ul class="tags"><li>Letras</li><li>Historia</li><li>Filosofía</li><li>Música</li><li>Artes visuales</li><li>Diseño</li><li>Arquitectura</li></ul>
+      </div>
+      <article class="ficha">
+        <div class="folio"><span>Ficha IV · Impresión risográfica, 2 tintas</span><span>Lectura 30 s</span></div>
+        <p class="big">La técnica no le quita misterio al arte. Le da instrumentos nuevos.</p>
+        <p>Componer con una caja de ritmos, medir el vocabulario de Cervantes o curar un museo que cabe en un link. Las humanidades digitales son una disciplina con método, y el Jam es buen lugar para probarla.</p>
+        <div class="note"><svg class="face" viewBox="0 0 40 40" aria-hidden="true"><use href="#faceIcon"/></svg><p><small>Nota de Naranjito</small>Cita tus ediciones. La estadística no sustituye la lectura: la provoca.</p></div>
+      </article>
+    </header>
+    <div class="wins">
+      <article class="win" data-prompt="seq">
+        <div class="win-bar"><span class="ttl">caja_pentatonica.exe</span><span class="tag">Web Audio · 16 pasos</span><button class="wb-q" aria-label="Ver el prompt que lo arma">?</button><button class="wb-min" aria-label="Minimizar ventana">_</button></div>
+        <div class="win-body">
+          <div class="win-head"><h3>Caja de ritmos pentatónica</h3><p>Cinco notas que nunca suenan mal juntas, más un bombo. Prende cuadros, dale Play y el fondo de la sección baila con el volumen. Sube tu volumen primero.</p></div>
+          <div class="seq" id="seqGrid" aria-label="Secuenciador de 16 pasos"></div>
+          <div class="ctrls">
+            <div class="ctl"><label for="seqBpm">Tempo <output id="seqBpmO">108 bpm</output></label><input type="range" id="seqBpm" min="70" max="160" value="108"></div>
+            <div class="ctl"><label for="seqWave">Forma de onda</label><select id="seqWave"><option value="triangle">Triangular, suave</option><option value="sine">Senoidal, flauta</option><option value="square">Cuadrada, 8 bits</option><option value="sawtooth">Diente de sierra, sintetizador</option></select></div>
+          </div>
+          <div class="row"><button class="btn solid sm" id="seqPlay" aria-pressed="false">Play</button><button class="btn sm" id="seqRand">Aleatorio con gusto</button><button class="btn sm" id="seqClear">Limpiar</button></div>
+        </div>
+      </article>
+      <article class="win" data-prompt="zipf">
+        <div class="win-bar"><span class="ttl">lectura_distante.exe</span><span class="tag">ley de Zipf</span><button class="wb-q" aria-label="Ver el prompt que lo arma">?</button><button class="wb-min" aria-label="Minimizar ventana">_</button></div>
+        <div class="win-body">
+          <div class="win-head"><h3>Leer a Cervantes con estadística</h3><p>En casi cualquier texto, la palabra más común aparece el doble que la segunda y el triple que la tercera. Pega el texto que quieras y compruébalo.</p></div>
+          <div class="row"><div class="seg" id="zSample"><button aria-pressed="true" data-z="q">Quijote, cap. I</button><button aria-pressed="false" data-z="s">Sor Juana</button></div><label class="chk"><input type="checkbox" id="zStop"> Quitar palabras vacías</label></div>
+          <textarea id="zIn" rows="4" spellcheck="false" aria-label="Texto a analizar"></textarea>
+          <div class="readouts"><span class="ro">palabras <b id="zN">0</b></span><span class="ro">distintas <b id="zV">0</b></span><span class="ro">hápax <b id="zH">0</b></span><span class="ro">tipo/token <b id="zT">0</b></span></div>
+          <div class="split" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+            <div class="zbars" id="zBars"></div>
+            <div class="stage" style="aspect-ratio:1"><canvas id="zCv" aria-label="Gráfica log-log de rango contra frecuencia"></canvas></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="stack" style="gap:16px">
+      <div class="ideas-h"><h3 class="halo" style="font-size:1.4rem">Seis ideas más para tu Jam</h3><span class="eyebrow halo" style="margin:0">Arte, archivo y memoria</span></div>
+      <div class="tickets" data-ideas="4"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= ELEMENTOS (render) ================= -->
+<section id="elementos" class="world w-render" data-world="w-render">
+  <div class="wrap stack">
+    <div class="rx-head">
+      <div class="stack" style="gap:16px">
+        <p class="eyebrow halo"><i>RTX</i> Render en tiempo real · cero fotos, cero video</p>
+        <h2 class="glitch halo">Agua, tierra, fuego <span class="serif">y aire.</span></h2>
+        <p class="lead halo">Cuatro escenas que tu tarjeta gráfica calcula en vivo, rayo por rayo, unas sesenta veces por segundo. Arrastra para mirar alrededor, mueve el sol y sube la calidad hasta «5090 en max» para ver hasta dónde aguanta tu equipo.</p>
+      </div>
+      <div class="rx-tabs" id="rxTabs" role="group" aria-label="Elemento">
+        <button data-s="agua" aria-pressed="true"><b>Agua</b><span>océano</span></button>
+        <button data-s="tierra" aria-pressed="false"><b>Tierra</b><span>mundo de bloques</span></button>
+        <button data-s="fuego" aria-pressed="false"><b>Fuego</b><span>fogata</span></button>
+        <button data-s="aire" aria-pressed="false"><b>Aire</b><span>mar de nubes</span></button>
+      </div>
+    </div>
+    <article class="win wide rx-win" data-prompt="render">
+      <div class="win-bar"><span class="ttl">elementos.exe</span><span class="tag">WebGL · shaders en vivo</span><button class="wb-q" aria-label="Ver el prompt que lo arma">?</button><button class="wb-min" aria-label="Minimizar ventana">_</button></div>
+      <div class="rx-stage">
+        <canvas id="rxCv" aria-label="Escena renderizada en tiempo real. Arrastra para girar la cámara"></canvas>
+        <div class="rx-hud"><span class="rx-rec">● EN VIVO</span><span id="rxHud">— FPS</span></div>
+        <div class="rx-cap"><b id="rxName">Agua</b><span id="rxTech">Suma de 9 ondas</span></div>
+        <span class="rx-drag">Arrastra para mirar</span>
+        <div class="rx-boom" id="rxBoom" hidden><b>¡KABOOM!</b><span id="rxBoomN">Demasiada presión. Se reconstruye en 5 segundos.</span></div>
+        <p class="rx-fail" id="rxFail" hidden>Tu navegador no pudo iniciar WebGL. Prueba en Chrome o Edge con la aceleración por hardware encendida.</p>
+      </div>
+      <div class="win-body">
+        <div class="ctrls">
+          <div class="ctl"><label for="rxSun">Hora del sol <output id="rxSunO">tarde</output></label><input type="range" id="rxSun" min="-0.15" max="1.3" step="0.01" value="0.32"></div>
+          <div class="ctl"><label for="rxK" id="rxKL">Oleaje <output id="rxKO">1.00×</output></label><input type="range" id="rxK" min="0.3" max="1.6" step="0.01" value="1"></div>
+          <div class="ctl"><span class="lbl">Calidad</span><div class="seg" id="rxQ"><button data-q="papa" aria-pressed="false">Modo papa</button><button data-q="auto" aria-pressed="true">Auto</button><button data-q="max" aria-pressed="false">5090 en max</button></div></div>
+        </div>
+        <div class="rx-fire" id="rxFire" hidden>
+          <div class="ctl"><span class="lbl">Química de la flama</span><div class="seg" id="rxPal"><button data-p="0" aria-pressed="true">Leña</button><button data-p="1" aria-pressed="false">Gas</button><button data-p="2" aria-pressed="false">Cobre</button><button data-p="3" aria-pressed="false">Estroncio</button><button data-p="4" aria-pressed="false">Arcoíris</button></div><p id="rxPalN" class="rx-note">Carbono incandescente: brilla como cuerpo negro entre 1,000 y 1,200 °C.</p></div>
+          <div class="ctl"><span class="lbl"><span>Presión de la hoguera</span><span>sostén la intensidad alta o muévela rápido</span></span><div class="rx-heat"><i id="rxHeat"></i></div></div>
+          <div class="row rx-fire-btns"><button class="btn sm" id="rxSnd" aria-pressed="true">Sonido: sí</button><button class="btn sm solid" id="rxRestore" hidden>Restaurar luces</button></div>
+        </div>
+        <div class="row" style="justify-content:space-between"><p id="rxQN" style="font-size:.86rem;color:var(--ink2);flex:1;min-width:220px">Automático: ajusta la resolución para mantener la fluidez.</p><button class="btn solid sm" id="rxShot">Poner todo en max</button></div>
+      </div>
+    </article>
+    <article class="ficha" id="rxFicha"></article>
+  </div>
+</section>
+
+
+<!-- ================= ARQUITECTURA VIVA 3D ================= -->
+<section id="arquitectura" class="world w-arq" data-world="w-arq">
+  <div class="wrap stack">
+    <div class="rx-head">
+      <div class="stack" style="gap:16px">
+        <p class="eyebrow halo"><i>3D</i> Arquitectura viva · autos y casas en 360°</p>
+        <h2 class="glitch halo">Estudio de <span class="serif">arquitectura viva.</span></h2>
+        <p class="lead halo">Un motor 3D profesional corriendo en tu navegador: un showroom de lujo y una villa frente al mar con yate, con un auto real de exhibición. Gira la cámara, mueve el sol, enciende los faros y corta la casa como en un plano de AutoCAD.</p>
+      </div>
+      <div class="rx-tabs" id="arTabs" role="group" aria-label="Escena">
+        <button data-s="showroom" aria-pressed="true"><b>Showroom</b><span>garaje de lujo</span></button>
+        <button data-s="villa" aria-pressed="false"><b>Villa y yate</b><span>casa frente al mar</span></button>
+      </div>
+    </div>
+    <article class="win wide ar-win" data-prompt="arq">
+      <div class="win-bar"><span class="ttl">estudio_3d.exe</span><span class="tag">three.js r147 · PBR · sombras</span><button class="wb-q" aria-label="Ver el prompt que lo arma">?</button><button class="wb-min" aria-label="Minimizar ventana">_</button></div>
+      <div class="ar-stage">
+        <canvas id="arCv" aria-label="Escena 3D interactiva. Arrastra para girar, rueda o pellizca para acercar"></canvas>
+        <div class="rx-hud"><span class="rx-rec">● 3D EN VIVO</span><span id="arHud">Preparando el motor…</span></div>
+        <div class="ar-cams" id="arCams" role="group" aria-label="Cámaras"></div>
+        <div class="rx-cap"><b id="arName">Showroom</b><span id="arTech">Ónix, nogal, latón y mármol · PBR</span></div>
+        <span class="rx-drag">Arrastra · pellizca · 360°</span>
+        <div class="ar-load" id="arLoad"><div class="ar-poster"><span class="eyebrow" style="margin:0"><i>3D</i> Estudio de arquitectura viva</span><b>Encendiendo el estudio</b><p id="arMsg">El motor 3D se carga cuando llegas a esta sección.</p><div class="ar-bar"><i id="arBar"></i></div></div></div>
+      </div>
+      <div class="win-body">
+        <div class="ctrls">
+          <div class="ctl"><label for="arHour">Hora del día <output id="arHourO">17:30 · atardecer</output></label><input type="range" id="arHour" min="6" max="22" step="0.25" value="17.5"></div>
+          <div class="ctl"><label for="arCut">Corte de sección <output id="arCutO">sin corte</output></label><input type="range" id="arCut" min="0" max="1" step="0.01" value="0"></div>
+        </div>
+        <div class="ctl"><span class="lbl">Carrocería</span><div class="ar-paints" id="arPaint"></div></div>
+        <div class="row"><button class="btn sm" id="arLights" aria-pressed="false">Faros y calaveras</button><button class="btn sm" id="arSpin" aria-pressed="true">Giro 360°</button><button class="btn sm" id="arPlan" aria-pressed="false">Plano tipo AutoCAD</button></div>
+        <p class="rx-note" id="arCarNote"></p>
+      </div>
+    </article>
+    <article class="ficha" id="arFicha"><div class="folio"><span>Cómo se modela · Showroom</span><span>Motor 3D en vivo</span></div><p class="big">Un motor de render profesional, three.js, dibuja la escena con materiales físicos, luces, sombras y reflejos.</p><p>El auto es un modelo glTF real; la arquitectura, los mármoles y las maderas se generan con código.</p></article>
+    <p class="gal-note">Auto: «Car Concept» de Eric Chadwick, basado en un modelo de dominio público de Unity Fan, publicado por Khronos Group en glTF Sample Assets bajo licencia CC BY 4.0 (incluye logos de Khronos). Motor: three.js, licencia MIT. La casa, el yate, los mármoles y las maderas están generados con código; no son fotos.</p>
+  </div>
+</section>
+
+<!-- ================= JAM ================= -->
+<section id="jam" class="world w-jam" data-world="w-jam">
+  <div class="wrap stack">
+    <div class="stack" style="gap:16px">
+      <p class="eyebrow" style="color:var(--ink)"><i style="color:var(--art2)">04</i> Ahora te toca</p>
+      <h2 class="glitch">Corre un Jam <span class="serif" style="color:var(--card)">en tres horas.</span></h2>
+      <p class="lead" style="color:var(--ink2)">Equipos de tres, un problema que le duela a alguien de verdad y una regla: al final todos publican algo. Un prototipo feo publicado le gana a uno perfecto que solo existe en tu cabeza.</p>
+    </div>
+    <div class="ros">
+      <ol class="ros-list" id="rosList"></ol>
+      <article class="ficha" id="rosCard"></article>
+    </div>
+
+    <article class="win wide" style="--card:#FFF4EA">
+      <div class="win-bar"><span class="ttl">armador_de_prompts.exe</span><span class="tag">de dos líneas a un brief</span></div>
+      <div class="win-body">
+        <div class="win-head"><h3>El armador de prompts</h3><p>Lo que casi todos escriben es una línea. Lo que funciona es un brief corto: para quién, qué debe poder hacer, con qué contenido y cómo se verifica.</p></div>
+        <div class="builder">
+          <div class="bform">
+            <div class="ctl"><span class="lbl">Área</span><div class="chips" id="bArea"></div></div>
+            <div class="ctl"><label for="bTopic">Tema</label><input type="text" id="bTopic"></div>
+            <div class="ctl"><span class="lbl">Formato</span><div class="chips" id="bFmt"></div></div>
+            <div class="ctl"><span class="lbl">Para quién</span><div class="chips" id="bAud"></div></div>
+            <div class="ctl"><span class="lbl">Interacción (elige varias)</span><div class="chips" id="bInt"></div></div>
+            <div class="ctl"><span class="lbl">Tono</span><div class="chips" id="bTone"></div></div>
+          </div>
+          <div class="pout">
+            <div class="lbl"><span>Lo que casi todos escriben</span></div>
+            <p class="bad" id="bBad"></p>
+            <div class="lbl"><span>Lo que escribes tú ahora</span><span id="bScore">especificidad 0%</span></div>
+            <div class="meter"><i id="bMeter" style="width:0"></i></div>
+            <pre id="bOut"></pre>
+            <div class="row"><button class="btn solid sm" id="bCopy" style="--art1:#FFE14D;--on1:#1A0B00;--ink:#FFE9D6">Copiar prompt</button></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="duo">
+      <article class="ficha">
+        <div class="folio"><span>Ruleta de retos</span><span>12 restricciones</span></div>
+        <div class="wheel">
+          <p style="color:var(--ink2)">Las restricciones hacen mejores prototipos. Gira una cuando el equipo se atore.</p>
+          <p class="out" id="rlOut">«Que funcione en celular con una sola mano.»</p>
+          <button class="btn solid" id="rlSpin" style="--art1:#5B3DF5;--on1:#fff">Girar la ruleta</button>
+        </div>
+      </article>
+      <article class="ficha">
+        <div class="folio"><span>Sprint de iteración</span><span>10 minutos</span></div>
+        <div class="wheel">
+          <p style="color:var(--ink2)">Una ronda: pide un cambio, míralo, decide. Cuando suene, publican lo que tengan.</p>
+          <p class="clock" id="tmOut">10:00</p>
+          <div class="row"><button class="btn solid" id="tmGo" style="--art1:#5B3DF5;--on1:#fff">Arrancar</button><button class="btn" id="tmReset">Reiniciar</button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= MUSEO ================= -->
+<section id="galeria" class="world w-museo" data-world="w-museo">
+  <div class="wrap stack gal-intro">
+    <p class="eyebrow halo"><i>06</i> Museo de la máquina que piensa · 23 obras · 24 siglos</p>
+    <h2 class="glitch halo">De Aristóteles <span class="serif">al qubit.</span></h2>
+    <p class="lead halo">Una galería de la teoría de la información y la inteligencia artificial. Baja despacio: el año corre en la pared, Naranjito camina por la sala y se mete en cada cuadro a jugar con la obra. Cuidado con la última sala.</p>
+    <p class="gal-note">Cada cuadro, cada pared de mármol o madera y cada luz es código que dibuja tu navegador: no hay fotos ni reproducciones de obras. Quédate frente a un cuadro y mira cómo cambia la luz. Las fechas marcan la publicación o el primer prototipo de cada idea.</p>
+  </div>
+  <div class="gal" id="gal">
+    <div class="gal-sticky">
+      <div class="gal-strip" id="galStrip" aria-hidden="true"></div>
+      <div class="gal-year" aria-live="off"><span class="mono" id="galCent">Siglo IV a.C.</span><b id="galYear">350 a.C.</b><span class="gal-era" id="galEra">Antigüedad</span><span class="gal-meta" id="galSala">Sala · Mármol de Carrara con oro</span><span class="gal-meta" id="galLuz">Luz neutra · 4300 K</span></div>
+      <div class="gal-track" id="galTrack"></div>
+            <div class="gal-bot" id="galBot"><div class="gb-m"></div><span class="gal-stars" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      <p class="gal-say" id="galSay" hidden></p>
+      <div class="gal-rule" id="galRule"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GLOSARIO ================= -->
+<section id="glosario" class="world w-glos" data-world="w-glos">
+  <div class="wrap stack">
+    <div class="stack" style="gap:16px">
+      <p class="eyebrow halo"><i>05</i> Para el que no sabe qué es Codex (y está bien)</p>
+      <h2 class="glitch halo">Glosario <span class="serif">sin pena.</span></h2>
+      <p class="lead halo">Doce palabras que vas a oír en cualquier curso de IA. Toca una tarjeta para voltearla.</p>
+    </div>
+    <div class="gl" id="gloss"></div>
+    <footer class="foot">
+      <div class="stack" style="gap:10px">
+        <p><b style="color:var(--ink)">Naranjito Lab</b> es un prototipo hecho con Claude Code en una sola sesión. Los fondos y las simulaciones son código que dibuja en tu navegador. Los modelos son ilustrativos: no sustituyen datos oficiales, diagnósticos ni asesoría.</p>
+        <p>Naranjito es un homenaje de fan al bichito pixelado que te saluda al abrir Claude Code. Esta demo no es oficial ni está afiliada a Anthropic. Las escenas de render son shaders que corren en tu tarjeta gráfica, no fotos ni video. Los partidos son ficticios. Los textos de Cervantes y Sor Juana son de dominio público.</p>
+      </div>
+      <div class="stack" style="gap:12px">
+        <p>Secretos: prueba <kbd>↑</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd><kbd>←</kbd><kbd>→</kbd><kbd>B</kbd><kbd>A</kbd>, o escribe <kbd>sudo</kbd> en cualquier parte.</p>
+        <div class="pills"><button class="pill red" id="redPill">Pastilla roja</button><button class="pill blue" id="bluePill">Pastilla azul</button></div>
+      </div>
+    </footer>
+  </div>
+</section>
+</main>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="faceIcon"><rect x="7" y="13" width="26" height="12" fill="#D97757"/><rect x="3" y="18" width="4" height="4" fill="#D97757"/><rect x="33" y="18" width="4" height="4" fill="#D97757"/><rect x="10" y="25" width="2" height="4" fill="#D97757"/><rect x="14" y="25" width="2" height="4" fill="#D97757"/><rect x="24" y="25" width="2" height="4" fill="#D97757"/><rect x="28" y="25" width="2" height="4" fill="#D97757"/><rect x="13" y="15" width="3" height="5" fill="#1F1E1D"/><rect x="24" y="15" width="3" height="5" fill="#1F1E1D"/><rect x="7" y="13" width="26" height="2" fill="#fff" opacity=".18"/></g></defs></svg>
+
+<aside class="dock" id="dock" aria-label="Guía con Naranjito">
+  <div class="dock-bub" id="dockBub">
+    <div class="dock-top"><span id="dockLbl">Parada 1 de 9</span><button class="dock-x" id="dockX" aria-label="Minimizar la guía">–</button></div>
+    <p id="dockTxt" aria-live="polite"></p>
+    <div class="dock-nav"><button class="btn sm" id="dockPrev">Anterior</button><div class="dots" id="dockDots"></div><button class="btn sm solid" id="dockNext">Siguiente</button></div>
+  </div>
+  <button class="dock-m" id="dockM" aria-label="Naranjito: abrir o cerrar la guía"><span class="badge" id="dockBadge" hidden>Guía</span></button>
+</aside>
+<div class="toast" id="toast" hidden></div>
+<div class="modal" id="modal" hidden><div><b>Copia el prompt a mano</b><p style="font-size:.85rem">Tu navegador no dejó copiar automáticamente. Ya está seleccionado: usa Ctrl+C o mantén presionado.</p><textarea id="modalTa" readonly></textarea><button class="btn" id="modalX" style="--ink:#1A1640;justify-self:start">Cerrar</button></div></div>
