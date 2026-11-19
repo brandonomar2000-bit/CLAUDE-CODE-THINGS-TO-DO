@@ -6,9 +6,9 @@
 
 **Una demo interactiva para colectivos y grupos de estudiantes que quieren entrarle a la IA y todavía no saben qué es Codex ni qué se arma en un Jam.**
 
-Ocho prototipos que funcionan · cuatro escenas renderizadas en vivo · un museo de 24 siglos · cero líneas que tengas que escribir
+Ocho prototipos que funcionan · cuatro escenas renderizadas en vivo · un estudio 3D de autos y casas · un museo de 24 siglos · cero líneas que tengas que escribir
 
-`HTML` · `CSS` · `JavaScript` · `Canvas 2D` · `WebGL` · `Web Audio` · sin frameworks, sin servidor
+`HTML` · `CSS` · `JavaScript` · `Canvas 2D` · `WebGL` · `Web Audio` · `three.js` · sin frameworks, sin backend
 
 </div>
 
@@ -52,7 +52,7 @@ Cada ventana tiene un botón **«?»** que enseña el prompt que la arma, y cada
 ### 4. Agua, tierra, fuego y aire: render en tiempo real
 
 <img src="docs/img/render-agua.jpg" alt="Océano con reflejos del sol" width="49%"> <img src="docs/img/render-tierra.jpg" alt="Mundo de bloques con lago, pasto y nieve" width="49%">
-<img src="docs/img/render-fuego.jpg" alt="Fogata volumétrica sobre troncos" width="49%"> <img src="docs/img/render-aire.jpg" alt="Mar de nubes volumétricas al atardecer" width="49%">
+<img src="docs/img/fuego-fluido.jpg" alt="Fogata de fluido simulado en una plaza de cantera frente a la ciudad al atardecer" width="49%"> <img src="docs/img/render-aire.jpg" alt="Mar de nubes volumétricas al atardecer" width="49%">
 
 Cuatro shaders de WebGL que tu tarjeta gráfica calcula rayo por rayo:
 
@@ -60,14 +60,32 @@ Cuatro shaders de WebGL que tu tarjeta gráfica calcula rayo por rayo:
 |---|---|
 | **Agua** | Suma de 9 ondas con la relación de dispersión ω = √(g·k), reflejo de Fresnel y espuma en las crestas |
 | **Tierra** | Mundo de bloques recorrido con el algoritmo DDA de Amanatides y Woo, sombras con un segundo rayo y oclusión ambiental |
-| **Fuego** | Volumen de ruido fractal con emisión de cuerpo negro, luz parpadeante y chispas |
+| **Fuego** | Fluido simulado en la GPU (Navier-Stokes en una rejilla de 128 × 256: advección, flotación, vorticidad y presión) con emisión de cuerpo negro, en una plaza de cantera frente a una ciudad con ventanas ámbar |
 | **Aire** | Nubes volumétricas con atenuación de Beer-Lambert y dispersión de Henyey-Greenstein |
 
 Arrastras para mirar alrededor, mueves el sol y eliges la calidad: **Modo papa**, **Auto** o **5090 en max**. Un contador de FPS te dice cuánto aguanta tu equipo.
 
+**El fuego tiene química y se puede reventar.** Cinco químicas de flama, como en la prueba de flama del laboratorio: leña, gas (azul por los radicales CH y C₂), cobre (verde), estroncio (rojo carmín) y arcoíris. Si sostienes la intensidad alta o la mueves muy rápido, la presión revienta la hoguera: onda expansiva, los seis faroles truenan uno por uno y sueltan cristales, la ciudad se apaga en ola y solo queda el fuego creciendo en la oscuridad con sus sombras. Todo con sonido sintetizado y un botón para restaurar las luces.
+
+<img src="docs/img/fuego-gas.jpg" alt="Flama de gas azul en la base y amarilla en la punta" width="49%"> <img src="docs/img/fuego-apagon.jpg" alt="Apagón: solo el fuego ilumina la plaza y proyecta sombras largas de las piedras" width="49%">
+
 > Las capturas se tomaron con un navegador sin tarjeta gráfica. En una GPU real se ven igual y se mueven con fluidez.
 
-### 5. Kit para el Jam
+### 5. Estudio de arquitectura viva 3D
+
+<img src="docs/img/estudio-showroom.jpg" alt="Showroom con muro de ónix, lambrín de nogal con latón, candil de cadenas y un auto rojo sobre tornamesa de mármol negro" width="100%">
+
+Un motor 3D profesional, [three.js](https://threejs.org), corriendo en el navegador con materiales físicos (PBR), sombras y reflejos.
+
+- **Showroom:** muro de ónix veteado, lambrín de nogal con marcos de latón, tragaluz con vigas de acero por donde entra el sol, candil de más de mil cadenas, sillón redondo sobre mármol negro y el auto en una tornamesa.
+- **Villa y yate:** casa frente al mar con planta baja de cristal, alberca infinita, palmeras, muelle de teca y un yate de 20 metros. El cielo es un modelo físico de dispersión y el agua refleja la escena en tiempo real.
+- **El auto** es un modelo glTF real, con pintura de capa transparente, cristales y faros emisivos. Tiene 3 variantes de fábrica y 3 colores propios.
+- **Controles:** hora del día de 6:00 a 22:00 (sombras, atardecer y noche con todo encendido), faros y calaveras, giro 360°, **corte de sección** y **vista de plano tipo AutoCAD**, más cámaras predefinidas.
+
+<img src="docs/img/estudio-faros.jpg" alt="El auto de frente con los faros encendidos en el showroom de noche" width="49%"> <img src="docs/img/estudio-villa-noche.jpg" alt="Villa de noche con la alberca iluminada y el auto junto al garaje" width="49%">
+<img src="docs/img/estudio-villa.jpg" alt="Vista aérea de la villa con muelle, yate y palmeras" width="49%"> <img src="docs/img/estudio-plano.jpg" alt="Vista de plano en alambre azul tipo AutoCAD" width="49%">
+
+### 6. Kit para el Jam
 <img src="docs/img/jam.jpg" alt="Armador de prompts: formulario a la izquierda y prompt generado a la derecha" width="100%">
 
 - Un programa de tres horas, bloque por bloque
@@ -75,7 +93,7 @@ Arrastras para mirar alrededor, mueves el sol y eliges la calidad: **Modo papa**
 - Una ruleta de retos
 - Un cronómetro de sprint de 10 minutos
 
-### 6. Museo de la máquina que piensa
+### 7. Museo de la máquina que piensa
 
 <img src="docs/img/museo.gif" alt="Recorrido animado por el museo: el año avanza de 350 a.C. a 2024 mientras Naranjito entra a cada cuadro" width="100%">
 
@@ -104,7 +122,7 @@ Una línea del tiempo que avanza mientras bajas. El año corre en una placa de p
 
 <img src="docs/img/museo-hollerith.jpg" alt="Naranjito con lentes industriales dentro de la tarjeta perforada de Hollerith" width="49%"> <img src="docs/img/museo-cuantica.jpg" alt="Naranjito desmayado con ojos en X frente a la computadora cuántica" width="49%">
 
-### 7. Glosario sin pena
+### 8. Glosario sin pena
 Doce tarjetas que se voltean: Prompt, Agente, Codex, Claude Code, Artifact, Repositorio, Token, Contexto, Alucinación, Conector (MCP), Subagente y API.
 
 ### Secretos
@@ -114,7 +132,13 @@ Doce tarjetas que se voltean: Prompt, Agente, Codex, Claude Code, Artifact, Repo
 
 ## Cómo abrirlo
 
-**Opción rápida:** descarga el repo y abre `index.html` en Chrome, Edge o Firefox. No necesita instalar nada.
+**En tu computadora:** descarga el repo y sírvelo con cualquier servidor estático, porque el navegador no deja cargar el modelo del auto desde un archivo abierto con doble clic:
+
+```bash
+python3 -m http.server 8000
+```
+
+Luego abre `http://localhost:8000` en Chrome, Edge o Firefox. Si abres `index.html` directo, todo funciona menos el auto del estudio 3D.
 
 **En línea con GitHub Pages:** en el repo, entra a **Settings → Pages**, elige la rama `main` y la carpeta `/ (root)`, y guarda. En un par de minutos queda en `https://<tu-usuario>.github.io/<nombre-del-repo>/`.
 
@@ -134,8 +158,10 @@ naranjito-lab/
 │   ├── style.css     ← tokens de color por sección y estilos
 │   ├── app.js        ← Naranjito, fondos vivos, prototipos, Jam, glosario, tour
 │   ├── gallery.js    ← el museo: 23 obras generativas y la línea del tiempo
-│   ├── render.js     ← los cuatro shaders de WebGL
+│   ├── render.js     ← los cuatro shaders de WebGL y la simulación de fluidos del fuego
+│   ├── arch.js       ← el estudio 3D con three.js
 │   └── build.sh
+├── assets/car.glb    ← el auto del estudio 3D (CC BY 4.0)
 └── docs/img/         ← capturas de este README
 ```
 
@@ -145,4 +171,7 @@ naranjito-lab/
 - **Naranjito es un homenaje de fan** al bichito pixelado que te saluda al abrir Claude Code. Este proyecto **no es oficial ni está afiliado a Anthropic**.
 - Las obras, las paredes y las luces del museo son código que dibuja el navegador, no fotos ni reproducciones. Los textos de Cervantes y Sor Juana son de dominio público.
 - Los partidos del simulador electoral son ficticios. Los modelos (SIR, ADN, render) son ilustrativos: no sustituyen datos oficiales, diagnósticos ni asesoría.
+- Auto del estudio 3D: **«Car Concept»** de Eric Chadwick (Darmstadt Graphics Group), basado en un modelo de dominio público de Unity Fan, publicado por Khronos Group en [glTF Sample Assets](https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarConcept) bajo licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Incluye logos de Khronos, que son marcas de Khronos Group.
+- Motor 3D: [three.js](https://threejs.org) r147, licencia MIT, cargado desde jsDelivr.
+- La casa, el yate, los mármoles, las maderas y el fuego están generados con código; no son fotos.
 - Tipografías de Google Fonts: Unbounded, Geist, Geist Mono e Instrument Serif.

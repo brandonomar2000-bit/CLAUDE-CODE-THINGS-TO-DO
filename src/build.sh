@@ -19,6 +19,7 @@ OUT=../index.html
   echo '<script>'; cat app.js; echo '</script>'
   echo '<script>'; cat gallery.js; echo '</script>'
   echo '<script>'; cat render.js; echo '</script>'
+  echo '<script>'; cat arch.js; echo '</script>'
   echo '</body>'; echo '</html>'
 } > "$OUT"
 echo "Listo: $(wc -c < "$OUT") bytes en index.html"

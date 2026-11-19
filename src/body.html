@@ -9,6 +9,7 @@
     <a href="#area-3" data-s="area-3">Área III</a>
     <a href="#area-4" data-s="area-4">Área IV</a>
     <a href="#elementos" data-s="elementos">Render</a>
+    <a href="#arquitectura" data-s="arquitectura">3D</a>
     <a href="#jam" data-s="jam">Jam</a>
     <a href="#galeria" data-s="galeria">Museo</a>
     <a href="#glosario" data-s="glosario">Glosario</a>
@@ -350,6 +351,7 @@
         <div class="rx-hud"><span class="rx-rec">● EN VIVO</span><span id="rxHud">— FPS</span></div>
         <div class="rx-cap"><b id="rxName">Agua</b><span id="rxTech">Suma de 9 ondas</span></div>
         <span class="rx-drag">Arrastra para mirar</span>
+        <div class="rx-boom" id="rxBoom" hidden><b>¡KABOOM!</b><span id="rxBoomN">Demasiada presión. Se reconstruye en 5 segundos.</span></div>
         <p class="rx-fail" id="rxFail" hidden>Tu navegador no pudo iniciar WebGL. Prueba en Chrome o Edge con la aceleración por hardware encendida.</p>
       </div>
       <div class="win-body">
@@ -358,10 +360,55 @@
           <div class="ctl"><label for="rxK" id="rxKL">Oleaje <output id="rxKO">1.00×</output></label><input type="range" id="rxK" min="0.3" max="1.6" step="0.01" value="1"></div>
           <div class="ctl"><span class="lbl">Calidad</span><div class="seg" id="rxQ"><button data-q="papa" aria-pressed="false">Modo papa</button><button data-q="auto" aria-pressed="true">Auto</button><button data-q="max" aria-pressed="false">5090 en max</button></div></div>
         </div>
+        <div class="rx-fire" id="rxFire" hidden>
+          <div class="ctl"><span class="lbl">Química de la flama</span><div class="seg" id="rxPal"><button data-p="0" aria-pressed="true">Leña</button><button data-p="1" aria-pressed="false">Gas</button><button data-p="2" aria-pressed="false">Cobre</button><button data-p="3" aria-pressed="false">Estroncio</button><button data-p="4" aria-pressed="false">Arcoíris</button></div><p id="rxPalN" class="rx-note">Carbono incandescente: brilla como cuerpo negro entre 1,000 y 1,200 °C.</p></div>
+          <div class="ctl"><span class="lbl"><span>Presión de la hoguera</span><span>sostén la intensidad alta o muévela rápido</span></span><div class="rx-heat"><i id="rxHeat"></i></div></div>
+          <div class="row rx-fire-btns"><button class="btn sm" id="rxSnd" aria-pressed="true">Sonido: sí</button><button class="btn sm solid" id="rxRestore" hidden>Restaurar luces</button></div>
+        </div>
         <div class="row" style="justify-content:space-between"><p id="rxQN" style="font-size:.86rem;color:var(--ink2);flex:1;min-width:220px">Automático: ajusta la resolución para mantener la fluidez.</p><button class="btn solid sm" id="rxShot">Poner todo en max</button></div>
       </div>
     </article>
     <article class="ficha" id="rxFicha"></article>
+  </div>
+</section>
+
+
+<!-- ================= ARQUITECTURA VIVA 3D ================= -->
+<section id="arquitectura" class="world w-arq" data-world="w-arq">
+  <div class="wrap stack">
+    <div class="rx-head">
+      <div class="stack" style="gap:16px">
+        <p class="eyebrow halo"><i>3D</i> Arquitectura viva · autos y casas en 360°</p>
+        <h2 class="glitch halo">Estudio de <span class="serif">arquitectura viva.</span></h2>
+        <p class="lead halo">Un motor 3D profesional corriendo en tu navegador: un showroom de lujo y una villa frente al mar con yate, con un auto real de exhibición. Gira la cámara, mueve el sol, enciende los faros y corta la casa como en un plano de AutoCAD.</p>
+      </div>
+      <div class="rx-tabs" id="arTabs" role="group" aria-label="Escena">
+        <button data-s="showroom" aria-pressed="true"><b>Showroom</b><span>garaje de lujo</span></button>
+        <button data-s="villa" aria-pressed="false"><b>Villa y yate</b><span>casa frente al mar</span></button>
+      </div>
+    </div>
+    <article class="win wide ar-win" data-prompt="arq">
+      <div class="win-bar"><span class="ttl">estudio_3d.exe</span><span class="tag">three.js r147 · PBR · sombras</span><button class="wb-q" aria-label="Ver el prompt que lo arma">?</button><button class="wb-min" aria-label="Minimizar ventana">_</button></div>
+      <div class="ar-stage">
+        <canvas id="arCv" aria-label="Escena 3D interactiva. Arrastra para girar, rueda o pellizca para acercar"></canvas>
+        <div class="rx-hud"><span class="rx-rec">● 3D EN VIVO</span><span id="arHud">Preparando el motor…</span></div>
+        <div class="ar-cams" id="arCams" role="group" aria-label="Cámaras"></div>
+        <div class="rx-cap"><b id="arName">Showroom</b><span id="arTech">Ónix, nogal, latón y mármol · PBR</span></div>
+        <span class="rx-drag">Arrastra · pellizca · 360°</span>
+        <div class="ar-load" id="arLoad"><div class="ar-poster"><span class="eyebrow" style="margin:0"><i>3D</i> Estudio de arquitectura viva</span><b>Encendiendo el estudio</b><p id="arMsg">El motor 3D se carga cuando llegas a esta sección.</p><div class="ar-bar"><i id="arBar"></i></div></div></div>
+      </div>
+      <div class="win-body">
+        <div class="ctrls">
+          <div class="ctl"><label for="arHour">Hora del día <output id="arHourO">17:30 · atardecer</output></label><input type="range" id="arHour" min="6" max="22" step="0.25" value="17.5"></div>
+          <div class="ctl"><label for="arCut">Corte de sección <output id="arCutO">sin corte</output></label><input type="range" id="arCut" min="0" max="1" step="0.01" value="0"></div>
+        </div>
+        <div class="ctl"><span class="lbl">Carrocería</span><div class="ar-paints" id="arPaint"></div></div>
+        <div class="row"><button class="btn sm" id="arLights" aria-pressed="false">Faros y calaveras</button><button class="btn sm" id="arSpin" aria-pressed="true">Giro 360°</button><button class="btn sm" id="arPlan" aria-pressed="false">Plano tipo AutoCAD</button></div>
+        <p class="rx-note" id="arCarNote"></p>
+      </div>
+    </article>
+    <article class="ficha" id="arFicha"><div class="folio"><span>Cómo se modela · Showroom</span><span>Motor 3D en vivo</span></div><p class="big">Un motor de render profesional, three.js, dibuja la escena con materiales físicos, luces, sombras y reflejos.</p><p>El auto es un modelo glTF real; la arquitectura, los mármoles y las maderas se generan con código.</p></article>
+    <p class="gal-note">Auto: «Car Concept» de Eric Chadwick, basado en un modelo de dominio público de Unity Fan, publicado por Khronos Group en glTF Sample Assets bajo licencia CC BY 4.0 (incluye logos de Khronos). Motor: three.js, licencia MIT. La casa, el yate, los mármoles y las maderas están generados con código; no son fotos.</p>
   </div>
 </section>
 

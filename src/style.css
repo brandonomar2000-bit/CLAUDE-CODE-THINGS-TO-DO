@@ -20,6 +20,7 @@
 .w-a4{--paper:#FFEFF3;--card:#FFFFFF;--ink:#1B1B3A;--ink2:#5C5476;--rule:#F5C2D1;--art1:#FF2E7E;--art2:#2F5BFF;--art3:#FFB000;--on1:#2A0012;color-scheme:light}
 .w-jam{--paper:#FF7A1A;--card:#FFF4EA;--ink:#2A1200;--ink2:#6E3510;--rule:#FFB27A;--art1:#2A1200;--art2:#5B3DF5;--art3:#FFE14D;--on1:#FFF4EA;color-scheme:light}
 .w-render{--paper:#07070D;--card:#12121C;--ink:#EDEEF7;--ink2:#9A9CB5;--rule:#26283A;--art1:#FF7A1A;--art2:#6BD0FF;--art3:#FFC94A;--on1:#1A0B00;color-scheme:dark}
+.w-arq{--paper:#100E0D;--card:#1C1916;--ink:#F3EEE6;--ink2:#B5A897;--rule:#36302A;--art1:#D9A441;--art2:#7FD3FF;--art3:#FF7A1A;--on1:#1C1400;color-scheme:dark}
 .w-glos{--paper:#1B1446;--card:#272063;--ink:#F5F1FF;--ink2:#B9B1E8;--rule:#3E3790;--art1:#FF7A1A;--art2:#8F7CFF;--art3:#3FE0C5;--on1:#1A0B00;color-scheme:dark}
 
 *{box-sizing:border-box}
@@ -568,3 +569,36 @@ body.in-museo .dock{opacity:0;pointer-events:none}
 .gal-meta{font:500 .62rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
 #galLuz{color:#E9C98A}
 @media (max-width:700px){.gal-year{padding:7px 10px 9px}.gal-year b{font-size:1.7rem}.gw-pil span{display:none}}
+
+/* ---------- fuego: química y explosión ---------- */
+.rx-fire{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:12px 18px;align-items:start}
+.rx-note{font-size:.84rem;color:var(--ink2);margin-top:6px}
+.rx-heat{height:10px;border-radius:6px;background:color-mix(in srgb,var(--ink) 14%,transparent);overflow:hidden;margin-top:8px}
+.rx-heat i{display:block;height:100%;width:0;background:linear-gradient(90deg,#FFC94A,#FF7A1A,#FF2E2E);transition:width .15s}
+.rx-boom{position:absolute;inset:0;display:grid;place-content:center;text-align:center;gap:6px;pointer-events:none;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.7)}
+.rx-boom b{font:800 clamp(2.4rem,8vw,5.4rem)/1 var(--f-display);letter-spacing:-.04em;color:#FFE14D;-webkit-text-stroke:2px #C2300B}
+.rx-boom span{font:400 1.2rem var(--f-serif);font-style:italic}
+@media (max-width:700px){.rx-fire{grid-template-columns:1fr}}
+.rx-fire-btns{grid-column:1/-1}
+
+/* ---------- arquitectura viva 3D ---------- */
+.ar-stage{position:relative;aspect-ratio:16/9;max-width:100%;background:radial-gradient(ellipse at 50% 40%,#2a231d,#0b0a09);overflow:clip}
+.ar-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+.ar-stage canvas:active{cursor:grabbing}
+.ar-cams{position:absolute;right:12px;top:12px;display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:60%}
+.ar-cams button{border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.45);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#F3EEE6;border-radius:999px;padding:6px 11px;font:500 .68rem var(--f-mono);letter-spacing:.06em}
+.ar-cams button[aria-pressed="true"]{background:var(--art1);border-color:var(--art1);color:var(--on1)}
+.ar-load{position:absolute;inset:0;display:grid;place-items:center;padding:20px;background:radial-gradient(ellipse at 50% 30%,rgba(217,164,65,.18),transparent 60%),linear-gradient(180deg,#1a1512,#0b0a09)}
+.ar-poster{display:grid;gap:10px;max-width:420px;text-align:left}
+.ar-poster b{font:800 clamp(1.4rem,3.4vw,2.2rem)/1.05 var(--f-display);letter-spacing:-.03em;color:#F3EEE6}
+.ar-poster p{color:#B5A897;font-size:.9rem}
+.ar-bar{height:6px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden}
+.ar-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#D9A441,#FF7A1A);transition:width .3s}
+.ar-load.err .ar-poster b{color:#FF9A7A}
+.ar-paints{display:flex;flex-wrap:wrap;gap:8px}
+.ar-paints button{display:inline-flex;align-items:center;gap:8px;border:1.5px solid color-mix(in srgb,var(--ink) 20%,transparent);background:transparent;border-radius:999px;padding:5px 12px 5px 5px;font:500 .74rem var(--f-body);color:var(--ink)}
+.ar-paints i{width:22px;height:22px;border-radius:50%;box-shadow:inset 0 -4px 8px rgba(0,0,0,.35),inset 0 3px 6px rgba(255,255,255,.35)}
+.ar-paints button[aria-pressed="true"]{border-color:var(--art1);box-shadow:0 0 0 3px color-mix(in srgb,var(--art1) 25%,transparent)}
+@media (max-width:860px){.ar-stage{aspect-ratio:4/5}.ar-cams{max-width:72%}}
+#arTabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:860px){#arTabs{grid-template-columns:repeat(2,minmax(0,1fr))}#arTabs button b{font-size:1rem}#arTabs button span{display:block}}
